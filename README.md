@@ -6,20 +6,21 @@ the cli tool
 
 the testing framework is pytest
 
-# # First time use
+# First time use
 0) Clone/fork the repo
 
-'''
-TODO add repo url
-'''
+```
+git clone https://github.com/FlaccidFacade/cliSkeleton.git
+```
 
 
 1) Python
 
  Make sure python 3.9 is installed
- '''
- python3 --version
- '''
+
+```
+python3 --version
+```
 
  This project is created with 3.9.9
 
@@ -33,36 +34,80 @@ TODO add repo url
  you choose to use lower version of python like python2
 
  python:
- '''
- python3.9 -m venv venv
- '''
+
+```
+python3.9 -m venv venv
+```
 
  virtualenv:
- '''
- virtualenv --python=python3.9 venv
- ''' 
+
+```
+virtualenv --python=python3.9 venv
+``` 
 
 3) Activate Virtual Env
 
  in the same volder the virtual environment was created run:
- '''
- source venv/bin/activate
- '''
 
-4) Dependencies/Requirements
- TODO create a requirements.txt
- The requirements.txt file holds all the needed 
- packages for this project.
-
- Note: be sure to adjust this as your project grows
-
-5) Stop the environment
+```
+source venv/bin/activate
+```
 
  To stop the running invironment run:
 
- '''
- deactivate
- '''
+```
+deactivate
+```
+
+4) Dependencies/Requirements
+
+ The requirements.txt file holds all the needed 
+ packages for this project. 
+ 
+ This is really the development requirements as it includes 
+ the testing framework
+
+  **Note: be sure to adjust this as your project grows 
+  and that your virtual environment is activated
+
+```
+pip install -r dev_requirements.txt
+```
+
+5) Using Cli
+
+ This allows for modules and commands to be simultaneously
+ updated and usable
+
+```
+pip install -e .
+```
+
+ 
+6) Testing
+
+
+ To run all tests use python3 and root test directory
+
+ without coverage:
+
+```
+python3 -m pytest test/
+```
+
+ with coverage:
+
+```
+python3 -m pytest --cov=src test/
+```
+
+ with coverage report:
+
+```
+python3 -m pytest --cov-report xml:cov.xml --cov=src test/
+```
+
+
 ## Coverage and Test Setup 
 
 One of the keys to faster and more effective testing is
@@ -87,17 +132,13 @@ Publisher: ryanluker
 VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
 
 1) Setup
- TODO Finish Testing setup explanation 
 
-
-  We must have the python path set correctly so that test will updatewithout having to run pip install . everytime we make a change to the modules.
+  We must have the python path set correctly so that tests will update without having to run pip install . everytime we make a change to the modules.
   make sure to run with your virtual env activated:
-  '''
-  pip install -e .
-  '''
 
 
 
-  ## CREDIT
+
+  # CREDIT
   ignore file is orginally sourced from here: 
   https://github.com/muhammad-mamdouh/Django_Projects/blob/1f31e12aefb36b33474256db40a2c551882f445e/src/.gitignore

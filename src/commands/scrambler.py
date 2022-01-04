@@ -1,5 +1,5 @@
 import click
-import silly.magic as magic
+import modules.silly.magic as magic
 
 @click.command()
 @click.option("--word", prompt="Word", help="The word to use.")

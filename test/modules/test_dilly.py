@@ -1,7 +1,7 @@
 """Tests the swapomatic function
 """
 
-import silly.magic as magic
+import src.modules.silly.magic as magic
 
 
 def test_swapping():

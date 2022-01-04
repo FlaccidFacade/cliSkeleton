@@ -1,0 +1,13 @@
+attrs==21.4.0
+click==8.0.3
+-e git+https://github.com/FlaccidFacade/cliSkeleton.git@38551dbe5289349ea6ca5e5a1ce741534cdf4193#egg=cliSkeleton
+coverage==6.2
+iniconfig==1.1.1
+packaging==21.3
+pluggy==1.0.0
+py==1.11.0
+pyparsing==3.0.6
+pytest==6.2.5
+pytest-cov==3.0.0
+toml==0.10.2
+tomli==2.0.0

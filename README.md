@@ -29,9 +29,9 @@ python3 --version
  either use the specific version of python itself
  or use virtualenv and specify
 
- both create a venv folder in the root dir
+ both create a venv folder in the root dir but
  virtualenv is an extra dependency that can be used if
- you choose to use lower version of python like python2
+ you choose to use a lower version of python like python2
 
  python:
 
@@ -47,7 +47,7 @@ virtualenv --python=python3.9 venv
 
 3) Activate Virtual Env
 
- in the same volder the virtual environment was created run:
+ in the same folder the virtual environment was created run:
 
 ```
 source venv/bin/activate

@@ -53,7 +53,7 @@ virtualenv --python=python3.9 venv
 source venv/bin/activate
 ```
 
- To stop the running invironment run:
+ To stop the running environment run:
 
 ```
 deactivate

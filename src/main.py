@@ -8,7 +8,7 @@ import commands.scrambler as scrambler
 
 @click.group(help="simple cli tool example")
 def start():
-  """[summary]
+  """used as an entry point for the cli program
   """
   pass
   

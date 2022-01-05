@@ -2,7 +2,7 @@ import click
 import modules.silly.magic as magic
 
 @click.command()
-@click.option("--word", prompt="Word", help="The word to use.")
+@click.argument('word')
 def scrambler(word):
   """Used to scramble the first two characters of the given word.
 

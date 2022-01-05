@@ -11,3 +11,8 @@ def test_swapping():
   swapped = magic.swap_O_Matic('VERY FUN!')
 
   assert swapped == "EVRY FUN!"
+
+
+  swapped = magic.swap_O_Matic('')
+
+  assert swapped == ""

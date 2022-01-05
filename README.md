@@ -107,8 +107,33 @@ python3 -m pytest --cov=src test/
 python3 -m pytest --cov-report xml:cov.xml --cov=src test/
 ```
 
+testing the cli script from the click documents recommends:
 
-## Coverage and Test Setup 
+"""
+To test the script, you can make a new virtualenv and then install your package:
+
+virtualenv venv
+. venv/bin/activate
+pip install --editable .
+
+Afterwards, your command should be available:
+
+$ yourscript
+Hello World!
+
+"""
+
+But i think end2end testing is important so lets go one step further
+"""
+For basic testing, Click provides the click.testing module which provides test functionality that helps you invoke command line applications and check their behavior.
+
+These tools should really only be used for testing as they change the entire interpreter state for simplicity and are not in any way thread-safe!
+"""
+
+Click testing guide: https://click.palletsprojects.com/en/8.0.x/testing/?highlight=test
+
+
+## Coverage
 
 One of the keys to faster and more effective testing is
 analyzing test cases with coverage reports
@@ -131,14 +156,7 @@ Version: 2.8.2
 Publisher: ryanluker
 VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
 
-1) Setup
 
-  We must have the python path set correctly so that tests will update without having to run pip install . everytime we make a change to the modules.
-  make sure to run with your virtual env activated:
-
-
-
-
-  # CREDIT
-  ignore file is orginally sourced from here: 
-  https://github.com/muhammad-mamdouh/Django_Projects/blob/1f31e12aefb36b33474256db40a2c551882f445e/src/.gitignore
+## CREDIT
+ignore file is orginally sourced from here: 
+https://github.com/muhammad-mamdouh/Django_Projects/blob/1f31e12aefb36b33474256db40a2c551882f445e/src/.gitignore

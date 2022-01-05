@@ -13,3 +13,6 @@ def start():
   pass
   
 start.add_command(scrambler.scrambler)
+
+if __name__ == '__main__':
+  start()

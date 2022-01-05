@@ -27,22 +27,18 @@ class Report:
     self.ouput_path = ouput_path
   
   def _csv2dict(self, path:str="")->dict:
-    return pandas.read_csv('csv_file.csv', header=None, index_col=0).to_dict()
+    """convert a csv file to a dictionary
+
+    Args:
+        path (str, optional): Path of the csv file to convert. Defaults to "".
+
+    Returns:
+        dict: the resulting dictionary.
+    """
+    return pandas.read_csv(path, header=None, index_col=0).to_dict()
   
 
-  def generate(self):
-    #get students []
-    # by ID and name
-    
 
-    # calculate total average
-
-    # get the student's courses
-    #  by ID, name, and teacher
-    #  calculate the course average
-
-
-    # start by parsing through marks to get the courses each student is written to
-
-    students = []
+  # def generate(self, student_id:int=0)->dict:
+  
   

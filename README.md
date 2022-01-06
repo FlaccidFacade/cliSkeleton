@@ -1,4 +1,4 @@
-# cliSkeleton
+# report
   a base hello world outline for a cli tool
 
   this repository uses python3.9 and click module to create 
@@ -11,6 +11,8 @@
 
   csv to dictionay conversion is handled using pandas module
 
+  dictionary to json conversion is handled using json module
+
   the testing framework is pytest
 
 # First time use 
@@ -19,7 +21,7 @@
 
 # design clarifications
 
-  This is designed under the assumption that no values in the csv files are empty
+  This is designed under the assumption that no values in the csv files are empty, the paths/files given are valid and exist
 
   The error response is different from the prompt. I believe erros should have more information.
   The weights error does not completely replace the report. There is still data to be viewed/used if there are other courses with valid weights. For this reasoning I implimented the error report in a way to have the error appear at lower level if needed. Additionally I added more errors and return values to help identify issues.
@@ -34,7 +36,7 @@
   0) Clone/fork the repo
 
   ```
-  git clone https://github.com/FlaccidFacade/cliSkeleton.git
+  git clone https://github.com/FlaccidFacade/report.git
   ```
 
 
@@ -63,12 +65,6 @@
   python3.9 -m venv venv
   ```
 
-  virtualenv:
-
-  ```
-  virtualenv --python=python3.9 venv
-  ``` 
-
   3) Activate Virtual Env
 
   in the same folder the virtual environment was created run:
@@ -94,7 +90,7 @@
     **Note: be sure to adjust this as your project grows 
     and that your virtual environment is activated
 
-  ```
+  ``` //TODO UPDATE REQUIREMENTS
   pip install -r dev_requirements.txt
   ```
 

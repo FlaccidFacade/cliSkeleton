@@ -4,7 +4,7 @@
     "python.testing.unittestEnabled": false,
     "python.testing.pytestArgs": [
       "-vv",
-      "--cov-report", "xml:cov.xml", "--cov=src", "test/"
+       "test/"
     ],
 	// The number of spaces a tab is equal to. This setting is overridden
 // based on the file contents when `editor.detectIndentation` is true.

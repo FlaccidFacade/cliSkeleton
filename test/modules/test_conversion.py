@@ -1,7 +1,7 @@
 """Tests the swapomatic function
 """
 
-import src.modules.file_play.csv_to_JSON as c2j
+import src.modules.conversion.csv_to_JSON as c2j
 
 
 def test_csv_to_dict():
@@ -119,3 +119,30 @@ def test_generate_all_students_2():
   assert list(output.items())[0][1][0]["totalAverage"] == 26.55
   assert len(list(output.items())[0][1][0]["courses"]) == 2
   assert list(output.items())[0][1][0]["courses"][0]["courseAverage"] == 51.8
+
+
+def test_write():
+    #create report object given the file paths specified
+  report = c2j.Report("Example1/courses.csv", "Example1/students.csv", "Example1/tests.csv", "Example1/marks.csv", "Example1/output.json")
+  
+  #generate a report for all students in files
+  report.generate_all()
+  #write the report to JSON file
+  report.write_JSON()
+
+  #manually tested file with diff checker
+  #tested output.json against given output
+  assert True
+
+def test_write_2():
+    #create report object given the file paths specified
+  report = c2j.Report("Example2/courses.csv", "Example2/students.csv", "Example2/tests.csv", "Example2/marks.csv", "Example2/output.json")
+  
+  #generate a report for all students in files
+  report.generate_all()
+  #write the report to JSON file
+  report.write_JSON()
+
+  #manually tested file with diff checker
+  #tested output.json against given output 
+  assert True

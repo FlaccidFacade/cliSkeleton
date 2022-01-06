@@ -1,4 +1,5 @@
 import pandas
+import json
 from modules.search.abs_search import absSearch
 from modules.search.linear_search import LinearSearch
 from modules.helpers.list_operations import unique_list
@@ -154,13 +155,12 @@ class Report:
 
 
   def write_JSON(self) -> bool:
-    #TODO create this
+    #create json object
+    json_report = json.dumps(self.report, indent=2)
 
-    #make sure output path is specified
-
-    
-
-    pass
+    #write json to file
+    with open(self.ouput_path, "w") as ouput:
+      ouput.write(json_report)
 
   def generate_all(self) -> dict:
     """generate all the students report given their ids

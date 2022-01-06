@@ -1,9 +1,10 @@
 """Package configuration."""
 from setuptools import find_packages, setup
 
+#TODO make sure this works for fresh install
 
 setup(
-    name="cliSkeleton",
+    name="report",
     version="0.1",
     packages=find_packages("src"),
     include_package_data=True,
@@ -11,7 +12,7 @@ setup(
     install_requires=['Click',],
     entry_points={
         'console_scripts' : 
-        ['cliSkeleton = main:start']
+        ['report = main:start']
     },
 
 )

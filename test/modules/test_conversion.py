@@ -67,23 +67,24 @@ def test_generate_one_student():
 
 
 
-def test_generate_single_error_no_student():
+def test_generate_error_no_student():
   """test to see if generate handles improper value and
   creates an error report
   """
   
   report = c2j.Report("Example1/courses.csv", "Example1/students.csv", "Example1/tests.csv", "Example1/marks.csv", "Example1/output.json")
   
-  assert report.generate(4) == {'error': "Can't find given student id", 'value': 4}
+  assert report.generate(4) == {'error': "Can't find given student id", 'info': 'Most likely, Student has not taken courses.', 'value': 4}
 
-def test_generate_single_error_bad_weights():
+def test_generate_error_student_not_in_marks():
   """test to see if generate handles improper value and
-  creates the error report 
+  creates the report with error for missing student
   """
-  report = c2j.Report("Example1/courses.csv", "Example1/students.csv", "Example3/tests.csv", "Example1/marks.csv", "Example1/output.json")
+  report = c2j.Report("Example1/courses.csv", "Example3/students.csv", "Example1/tests.csv", "Example1/marks.csv", "Example1/output.json")
   
-  output = report.generate(1)
-  assert output == {'error': "Can't find given student id", 'value': 1}
+  output = report.generate_all()
+  assert list(output.items())[0][1][1]["id"] == 2
+  assert list(output.items())[0][1][2] == {'error': "Can't find given student id", 'info': 'Most likely, Student has not taken courses.', 'value': '5'}
 
 def test_generate_all_error_bad_weights():
   """test to see if generate_all handles improper value and

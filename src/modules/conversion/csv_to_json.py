@@ -19,7 +19,7 @@ class Report:
   top_err_mess  = "Problem in student csv"
   strategy: AbsSearch
 
-  def __init__(self, courses_path:str, students_path:str, tests_path:str, marks_path:str, ouput_path:str, strategy:absSearch=None) -> None:
+  def __init__(self, courses_path:str, students_path:str, tests_path:str, marks_path:str, ouput_path:str, strategy:AbsSearch=None) -> None:
     """creates dictionaries of csv files
 
     Args:
@@ -144,7 +144,7 @@ class Report:
     """
     return self.strategy.find(self,obj,target)
 
-  def set_search_alg(self, strategy: absSearch = LinearSearch) -> None:
+  def set_search_alg(self, strategy: AbsSearch = LinearSearch) -> None:
     """used to set the searching algorithm strategy
 
     Args:
@@ -168,14 +168,22 @@ class Report:
     Returns:
         dict: report of all the students
     """
-    students = list(self.students_dict.get(1))
-    students.pop(0)
-    student_reports = []
-    
-    for i in students:
-      report = self.generate(i)
-      student_reports.append(report)
-    
+    try:
+      #get list of students
+      students = list(self.students_dict.get(1))
+      students.pop(0)
+      student_reports = []
+      
+      #generate report for each student in list
+      for i in students:
+        report = self.generate(i)
+        student_reports.append(report)
+
+
+    #report if there is an error
+    except Exception as e:
+      return self.err(self.top_err_mess, value=e)
+
     self.report = {"students": student_reports}
     return self.report
 
@@ -194,7 +202,7 @@ class Report:
     mark_student_id = self.marks_dict.get('student_id')
     mark_student_keys = self._search(mark_student_id,student_id)
     if not mark_student_keys:
-      return self._error(message=self.student_err_mess,value=student_id)
+      return self._error(message=self.student_err_mess,value=student_id, info="Most likely, Student has not taken courses.")
 
     #map those keys to test_id and mark
     mark_test_id = []

@@ -63,14 +63,40 @@ def test_generate_one_student():
                                 ]
                               }
 
-def test_generate_no_student():
-  """test to see if generate handles improper value"""
+def test_generate_single_error_no_student():
+  """test to see if generate handles improper value and
+  creates the error report sepcified in the object
+  """
   
   report = c2j.Report("Example1/courses.csv", "Example1/students.csv", "Example1/tests.csv", "Example1/marks.csv", "Example1/output.json")
   
 
-  assert report.generate(4) == None
+  assert report.generate(4) == getattr(report,'err')
 
+def test_generate_single_error_no_student_proper_message():
+  """test to see if generate handles improper value and
+  creates an error report and the error report is correct
+  """
+  
+  report = c2j.Report("Example1/courses.csv", "Example1/students.csv", "Example1/tests.csv", "Example1/marks.csv", "Example1/output.json")
+  
+  assert report.generate(4) == {"error": "Invalid course weights"}
+
+def test_generate_single_error_bad_weights():
+  """test to see if generate handles improper value and
+  creates the error report sepcified in the object
+  """
+  report = c2j.Report("Example1/courses.csv", "Example1/students.csv", "Example3/tests.csv", "Example1/marks.csv", "Example1/output.json")
+  
+  assert report.generate(1) == getattr(report,'err')
+
+def test_generate_all_error_bad_weights():
+  """test to see if generate_all handles improper value and
+  creates the error report sepcified in the object
+  """
+  report = c2j.Report("Example1/courses.csv", "Example1/students.csv", "Example3/tests.csv", "Example1/marks.csv", "Example1/output.json")
+  
+  assert report.generate_all() == getattr(report,'err')
 
 def test_generate_all_students():
   """test to see report output"""
@@ -79,6 +105,7 @@ def test_generate_all_students():
 
   assert report.generate_all() is not None
   #TODO spot check result
+
 
 
 def test_generate_all_students_2():

@@ -13,6 +13,7 @@ class Report:
   marks_dict = {}
   ouput_path = ""
   report = {}
+  err = {"error": "Invalid course weights"}
   strategy: absSearch
 
   def __init__(self, courses_path:str, students_path:str, tests_path:str, marks_path:str, ouput_path:str, strategy:absSearch=None) -> None:
@@ -33,7 +34,7 @@ class Report:
     if strategy == None:
       self.set_search_alg()
     else:
-      self.set_search_alg(strategy=strategy) #TODO Write test to cover this
+      self.set_search_alg(strategy=strategy)
   
   def _csv2dict(self, path:str="",ic:int=0,uc:list=None)->dict:
     """convert a csv file to a dictionary
@@ -85,7 +86,11 @@ class Report:
     numOfStudents = len(self.students_dict.get(1)) - 1
     studentReports = []
     for i in range(numOfStudents):
-      studentReports.append(self.generate(i+1))
+      report = self.generate(i+1)
+      if report == self.err:
+        return report
+      else:
+        studentReports.append(report)
     
     self.report = {"students": studentReports}
     return self.report
@@ -96,7 +101,7 @@ class Report:
     student_id as 0 creates a None type object
 
     Args:
-        student_id (int, optional): id of the student for report. Defaults to 0.
+        student_id (int, optional): id of the student for report uses 1 start indexing. Defaults to 0.
 
     Returns:
         dict: report of the student
@@ -105,7 +110,7 @@ class Report:
     markStudentId = self.marks_dict.get('student_id')
     markStudentKeys = self.search(markStudentId,str(student_id))
     if not markStudentKeys:
-      return
+      return self.invalid_input_report()
 
     #map those keys to test_id and mark
     markTestId = []
@@ -125,6 +130,10 @@ class Report:
     
     #get course averages
     courseAverages = self.get_course_average(uCI=uniqueCourseIds,marks=marks,cI=courseIds,cW=courseWeights)
+
+    #check results are valid
+    if courseAverages == None or None in courseAverages:
+      return self.invalid_input_report()
 
     courses = []
     for i in range(len(uniqueCourseIds)):
@@ -179,5 +188,16 @@ class Report:
     courseAverages = []
     for i in range(len(uCI)):
       courseAverages.append(weighted_grade(tempMarks.get(str(i)),tempWeights.get(str(i))))
+  
 
     return courseAverages
+
+  def invalid_input_report(self) -> dict:
+    """used for creating a report with errors present
+
+    Returns:
+        dict: error report
+    """
+    self.report = self.err
+
+    return self.report

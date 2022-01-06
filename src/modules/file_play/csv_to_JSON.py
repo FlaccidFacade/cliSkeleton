@@ -211,9 +211,7 @@ class Report:
       course_weights.append(self.tests_dict.get(2).get(key))
 
     unique_course_ids = unique_list(course_ids)
-    
-    
-    #TODO validate weights
+
     invalid_weights = self._validate_weights(unique_course_ids)
 
     courses = []
@@ -227,14 +225,12 @@ class Report:
         course_report["name"] = self.course_dict.get(1).get(unique_course_ids[i])
         course_report["teacher"] = self.course_dict.get(2).get(unique_course_ids[i])
         course_report["courseAverage"] = float(format(course_averages[i],'.1f'))
-        
       else:
         course_report = self._error(self.weight_err_mess, value=float(format(course_averages[i],'.1f')), info= "Course grades still not included in total averages")
 
       courses.append(course_report)
 
     #calculate students total average 
-    
     total_average = sum(course_averages)/len(course_averages)
 
     # create student report

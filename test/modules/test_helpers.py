@@ -15,3 +15,15 @@ def test_weighted_grade():
   weights = [10,40,50]
   grades = [78,87,15]
   assert math.weighted_grade(grades,weights) == 50.1
+
+def test_weighted_grade_wrong_size():
+  """quick test to show weighted grades is returning none
+  when length of lists are wrong
+  """
+  weights = [10,40,50,40]
+  grades = [78,87,15]
+  assert math.weighted_grade(grades,weights) == None
+
+  grades = [10,40,50,40]
+  weights = [78,87,15]
+  assert math.weighted_grade(grades,weights) == None

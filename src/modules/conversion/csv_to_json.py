@@ -1,6 +1,6 @@
 import pandas
 import json
-from modules.search.abs_search import absSearch
+from modules.search.abs_search import AbsSearch
 from modules.search.linear_search import LinearSearch
 from modules.helpers.list_operations import unique_list
 from modules.helpers.math import weighted_grade
@@ -17,7 +17,7 @@ class Report:
   weight_err_mess = "Invalid course weights"
   student_err_mess  = "Can't find given student id"
   top_err_mess  = "Problem in student csv"
-  strategy: absSearch
+  strategy: AbsSearch
 
   def __init__(self, courses_path:str, students_path:str, tests_path:str, marks_path:str, ouput_path:str, strategy:absSearch=None) -> None:
     """creates dictionaries of csv files

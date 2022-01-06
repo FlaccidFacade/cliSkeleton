@@ -31,6 +31,13 @@
 
   The Report class is created in a way so reports can be created per student for easier addition of future features.
 
+  naming styles should follow pep 8 for readability
+
+  doc strings should follow google for readabilty
+
+  different import styles for testing ability, readability, and usability. 
+    in test use this form: import src.modules.module_name as foo
+    in src use this form: from modules.module_name import ClassName
 
 # First time use Developement
   0) Clone/fork the repo

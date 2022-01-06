@@ -1,5 +1,5 @@
 import click
-from modules.conversion.csv_to_JSON import Report
+from modules.conversion.csv_to_json import Report
 
 
 @click.command()

@@ -1,8 +1,8 @@
 
-from modules.search.abs_search import absSearch
+from modules.search.abs_search import AbsSearch
 
 
-class LinearSearch(absSearch):
+class LinearSearch(AbsSearch):
 
   def find(self, obj:dict={}, target=None)->list:
     """searches dictionary values for target and returns keys if found

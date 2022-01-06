@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class absSearch(ABC):
+class AbsSearch(ABC):
   """Abstract class for searching algorithms
   this allows for easy replacement of the simple linear search
   if real data set is too large for linear search and we need

@@ -1,33 +1,31 @@
 from click.testing import CliRunner
 import src.main as cli
 
-def test_no_command():
+def test_no_arg():
+  """test how the program reacts when there is no arguments"""
   runner = CliRunner()
   result = runner.invoke(cli.start, [])
-  assert result.exit_code == 0
-
-def test_scrambler_as_comm():
-  runner = CliRunner()
-  result = runner.invoke(cli.start, ["scrambler", "Peter"])
-  assert result.exit_code == 0
-  assert result.output == "ePter\n"
-
-def test_scrambler_as_comm_no_arg():
-  runner = CliRunner()
-  result = runner.invoke(cli.start, ["scrambler"])
   assert result.exit_code == 2
-  assert result.output is not None
 
-def test_fakeCommand_as_comm():
+def test_main_success_1():
+  """test how the program reacts when there is proper arguments
+  use example1 inputs
+  """
   runner = CliRunner()
-  result = runner.invoke(cli.start, ["fakeCommand", "Peter"])
-  assert result.exit_code == 2
-  assert result.output is not None
+  #TODO run main with arguements
+  # result = runner.invoke(cli.start,)
+  # assert result.exit_code == 2
+  # assert result.output is not None
+  pass
 
-def test_fakeCommand_as_comm_no_arg():
+def test_main_success_2():
+  """test how the program reacts when there is proper arguments
+  use example2 inputs
+  """
   runner = CliRunner()
-  result = runner.invoke(cli.start, ["fakeCommand"])
-  assert result.exit_code == 2
-  assert result.output is not None
-
+  #TODO run main with arguements
+  # result = runner.invoke(cli.start,)
+  # assert result.exit_code == 2
+  # assert result.output is not None
+  pass
 

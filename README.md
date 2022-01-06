@@ -4,7 +4,13 @@ a base hello world outline for a cli tool
 this repository uses python3.9 and click module to create 
 the cli tool
 
+click module is used great for a fast design 
+and well equipped to scale with a design patterns
+
+click handles extra features inhabitantly and offers easy to use features
+
 the testing framework is pytest
+
 
 # First time use
 0) Clone/fork the repo

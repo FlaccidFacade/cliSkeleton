@@ -9,18 +9,20 @@
 
   click handles extra features inhabitantly and offers easy to use features
 
+  csv to dictionay conversion is handled using pandas module
+
   the testing framework is pytest
 
 # First time use 
 
 
 
-# Things I would change and clarifications
+# design clarifications
 
-  The error response should have more information to determine what course has the wrong weights.
-  The weights error should not completely replace the report. There is still data to be viewed/used if there are
-  other courses with valid weights. For this reasoning I implimented the error report in a way to have the error 
-  appear at lower level if needed. Additionally Id add more features like an error level variable so display of an error could be handled based on user wants. This would be similar to suppressing warnings.
+  This is designed under the assumption that no values in the csv files are empty
+
+  The error response is different from the prompt. I believe erros should have more information.
+  The weights error does not completely replace the report. There is still data to be viewed/used if there are other courses with valid weights. For this reasoning I implimented the error report in a way to have the error appear at lower level if needed. Additionally I added more errors and return values to help identify issues.
 
   Linear search is implimented as a strategy pattern because a larger data set might need a faster searching algorithm and the strategy pattern allows for easy additions and versioning
 

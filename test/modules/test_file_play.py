@@ -98,20 +98,111 @@ def test_generate_all_error_bad_weights():
   
   assert report.generate_all() == getattr(report,'err')
 
-def test_generate_all_students():
+def test_generate_all_students_1():
   """test to see report output"""
   report = c2j.Report("Example1/courses.csv", "Example1/students.csv", "Example1/tests.csv", "Example1/marks.csv", "Example1/output.json")
   
 
-  assert report.generate_all() is not None
+  assert report.generate_all() =={
+  "students": [
+    {
+      "id": 1,
+      "name": "A",
+      "totalAverage": 72.03,
+      "courses": [
+        {
+          "id": 1,
+          "name": "Biology",
+          "teacher": "Mr. D",
+          "courseAverage": 90.1
+        },
+        {
+          "id": 3,
+          "name": "Math",
+          "teacher": "Mrs. C",
+          "courseAverage": 74.2
+        },
+        {
+          "id": 2,
+          "name": "History",
+          "teacher": "Mrs. P",
+          "courseAverage": 51.8
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "B",
+      "totalAverage": 62.15,
+      "courses": [
+        {
+          "id": 1,
+          "name": "Biology",
+          "teacher": "Mr. D",
+          "courseAverage": 50.1
+        },
+        {
+          "id": 3,
+          "name": "Math",
+          "teacher": "Mrs. C",
+          "courseAverage": 74.2
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "C",
+      "totalAverage": 72.03,
+      "courses": [
+        {
+          "id": 1,
+          "name": "Biology",
+          "teacher": "Mr. D",
+          "courseAverage": 90.1
+        },
+        {
+          "id": 2,
+          "name": "History",
+          "teacher": "Mrs. P",
+          "courseAverage": 51.8
+        },
+        {
+          "id": 3,
+          "name": "Math",
+          "teacher": "Mrs. C",
+          "courseAverage": 74.2
+        }
+      ]
+    }
+  ]
+}
   #TODO spot check result
-
-
 
 def test_generate_all_students_2():
   """test to see report output"""
   report = c2j.Report("Example2/courses.csv", "Example2/students.csv", "Example2/tests.csv", "Example2/marks.csv", "Example2/output.json")
   
-  #TODO add 2nd example for testing
-  assert report.generate_all() is not None
-  #TODO spot check result
+
+  assert report.generate_all() == {
+  "students": [
+    {
+      "id": 5,
+      "name": "D",
+      "totalAverage": 26.55,
+      "courses": [
+        {
+          "id": 1,
+          "name": "Biology",
+          "teacher": "Mr. D",
+          "courseAverage": 1.3
+        },
+        {
+          "id": 2,
+          "name": "History",
+          "teacher": "Mrs. P",
+          "courseAverage": 51.8
+        }
+      ]
+    }
+  ]
+}

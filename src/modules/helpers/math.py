@@ -18,6 +18,6 @@ def weighted_grade(grades:list=[],weights:list=[]) -> float:
   weight = sum(list(map(int, weights)))
 
   if weight == 100:
-    return sum(multiply_lists(grades,weights))/weight
+    return sum(multiply_lists(grades,weights))/100
   else:
     return None

@@ -13,7 +13,9 @@ class Report:
   marks_dict = {}
   ouput_path = ""
   report = {}
-  err = {"error": "Invalid course weights"}
+  weightErrMessage = "Invalid course weights"
+  studentErrMessage  = "Can't find given student id"
+  topErrMessage  = "Problem in student csv"
   strategy: absSearch
 
   def __init__(self, courses_path:str, students_path:str, tests_path:str, marks_path:str, ouput_path:str, strategy:absSearch=None) -> None:
@@ -83,34 +85,33 @@ class Report:
     Returns:
         dict: report of all the students
     """
-    numOfStudents = len(self.students_dict.get(1)) - 1
+    students = list(self.students_dict.get(1))
+    students.pop(0)
     studentReports = []
-    for i in range(numOfStudents):
-      report = self.generate(i+1)
-      if report == self.err:
-        return report
-      else:
-        studentReports.append(report)
+    
+    for i in students:
+      report = self.generate(i)
+      studentReports.append(report)
     
     self.report = {"students": studentReports}
     return self.report
 
-  def generate(self, student_id:int=0)-> dict:
+  def generate(self, student_id:str="0")-> dict:
     """generate the student report given their id
 
     student_id as 0 creates a None type object
 
     Args:
-        student_id (int, optional): id of the student for report uses 1 start indexing. Defaults to 0.
+        student_id (str, optional): id of the student for report uses 1 start indexing. Defaults to 0.
 
     Returns:
         dict: report of the student
     """
     #get the student id postions for the marks file
     markStudentId = self.marks_dict.get('student_id')
-    markStudentKeys = self.search(markStudentId,str(student_id))
+    markStudentKeys = self.search(markStudentId,student_id)
     if not markStudentKeys:
-      return self.invalid_input_report()
+      return self.error(self.studentErrMessage,value=student_id)
 
     #map those keys to test_id and mark
     markTestId = []
@@ -128,27 +129,34 @@ class Report:
 
     uniqueCourseIds = unique_list(courseIds)
     
-    #get course averages
-    courseAverages = self.get_course_average(uCI=uniqueCourseIds,marks=marks,cI=courseIds,cW=courseWeights)
-
-    #check results are valid
-    if courseAverages == None or None in courseAverages:
-      return self.invalid_input_report()
+    
+    #TODO validate weights
+    validWeights = True
 
     courses = []
+      
+    courseAverages = self.get_course_average(uCI=uniqueCourseIds,marks=marks,cI=courseIds,cW=courseWeights)
+    
     for i in range(len(uniqueCourseIds)):
       courseReport = {}
-      courseReport["id"] = int(uniqueCourseIds[i])
-      courseReport["name"] = self.course_dict.get(1).get(uniqueCourseIds[i])
-      courseReport["teacher"] = self.course_dict.get(2).get(uniqueCourseIds[i])
-      courseReport["courseAverage"] = float(format(courseAverages[i],'.1f'))
+      if validWeights:
+        courseReport["id"] = int(uniqueCourseIds[i])
+        courseReport["name"] = self.course_dict.get(1).get(uniqueCourseIds[i])
+        courseReport["teacher"] = self.course_dict.get(2).get(uniqueCourseIds[i])
+        courseReport["courseAverage"] = float(format(courseAverages[i],'.1f'))
+        
+      else:
+        courseReport = self.error(self.weightErrMessage, info= "Course grades still included int total averages")
+
       courses.append(courseReport)
+
+
 
     #calculate students total average 
     totalAverage = sum(courseAverages)/len(courseAverages)
-    
+
     # create student report
-    self.report = {"id": int(student_id), "name": self.students_dict.get(1).get(str(student_id)), 
+    self.report = {"id": int(student_id), "name": self.students_dict.get(1).get(student_id), 
                       "totalAverage": float(format(totalAverage,'.2f')), "courses": courses}
     return self.report
   
@@ -192,12 +200,10 @@ class Report:
 
     return courseAverages
 
-  def invalid_input_report(self) -> dict:
-    """used for creating a report with errors present
-
-    Returns:
-        dict: error report
-    """
-    self.report = self.err
-
-    return self.report
+  def error(message,value=None, info:str=None, level:str="error")->dict:
+    err = {level: message}
+    if info is not None:
+      err["info"] = info
+    if value is not None:
+      err["value"] = value
+    return err

@@ -26,6 +26,7 @@
 
   Linear search is implimented as a strategy pattern because a larger data set might need a faster searching algorithm and the strategy pattern allows for easy additions and versioning
 
+
   The Report class is created in a way so reports can be created per student for easier addition of future features.
 
 

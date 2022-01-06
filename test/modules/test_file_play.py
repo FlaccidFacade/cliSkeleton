@@ -43,7 +43,7 @@ def test_generate_one_student():
   """
   report = c2j.Report("Example1/courses.csv", "Example1/students.csv", "Example1/tests.csv", "Example1/marks.csv", "Example1/output.json")
   
-  assert report.generate(2) == {
+  assert report.generate('2') == {
                                 "id": 2, 
                                 "name": "B", 
                                 "totalAverage": 62.15, 
@@ -63,146 +63,59 @@ def test_generate_one_student():
                                 ]
                               }
 
+
+
 def test_generate_single_error_no_student():
   """test to see if generate handles improper value and
-  creates the error report sepcified in the object
+  creates an error report
   """
   
   report = c2j.Report("Example1/courses.csv", "Example1/students.csv", "Example1/tests.csv", "Example1/marks.csv", "Example1/output.json")
   
-
-  assert report.generate(4) == getattr(report,'err')
-
-def test_generate_single_error_no_student_proper_message():
-  """test to see if generate handles improper value and
-  creates an error report and the error report is correct
-  """
-  
-  report = c2j.Report("Example1/courses.csv", "Example1/students.csv", "Example1/tests.csv", "Example1/marks.csv", "Example1/output.json")
-  
-  assert report.generate(4) == {"error": "Invalid course weights"}
+  assert report.generate(4) == {'error': "Can't find given student id", 'value': 4}
 
 def test_generate_single_error_bad_weights():
   """test to see if generate handles improper value and
-  creates the error report sepcified in the object
+  creates the error report 
   """
   report = c2j.Report("Example1/courses.csv", "Example1/students.csv", "Example3/tests.csv", "Example1/marks.csv", "Example1/output.json")
   
-  assert report.generate(1) == getattr(report,'err')
+  output = report.generate(1)
+  assert output == {'error': "Can't find given student id", 'value': 1}
 
 def test_generate_all_error_bad_weights():
   """test to see if generate_all handles improper value and
-  creates the error report sepcified in the object
+  creates the error report
   """
   report = c2j.Report("Example1/courses.csv", "Example1/students.csv", "Example3/tests.csv", "Example1/marks.csv", "Example1/output.json")
-  
-  assert report.generate_all() == getattr(report,'err')
+  output = report.generate_all()
+  assert len(list(output.items())[0]) == 2
+  assert list(output.items())[0][1][1]["courses"][0]["error"] == "Invalid course weights"
+  assert list(output.items())[0][1][1]["courses"][0]["value"] == 46.2
+  assert list(output.items())[0][1][2]["courses"][2]["id"] == 3
 
 def test_generate_all_students_1():
-  """test to see report output"""
+  """test to see report output for example 1"""
   report = c2j.Report("Example1/courses.csv", "Example1/students.csv", "Example1/tests.csv", "Example1/marks.csv", "Example1/output.json")
   
-
-  assert report.generate_all() =={
-  "students": [
-    {
-      "id": 1,
-      "name": "A",
-      "totalAverage": 72.03,
-      "courses": [
-        {
-          "id": 1,
-          "name": "Biology",
-          "teacher": "Mr. D",
-          "courseAverage": 90.1
-        },
-        {
-          "id": 3,
-          "name": "Math",
-          "teacher": "Mrs. C",
-          "courseAverage": 74.2
-        },
-        {
-          "id": 2,
-          "name": "History",
-          "teacher": "Mrs. P",
-          "courseAverage": 51.8
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "B",
-      "totalAverage": 62.15,
-      "courses": [
-        {
-          "id": 1,
-          "name": "Biology",
-          "teacher": "Mr. D",
-          "courseAverage": 50.1
-        },
-        {
-          "id": 3,
-          "name": "Math",
-          "teacher": "Mrs. C",
-          "courseAverage": 74.2
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "name": "C",
-      "totalAverage": 72.03,
-      "courses": [
-        {
-          "id": 1,
-          "name": "Biology",
-          "teacher": "Mr. D",
-          "courseAverage": 90.1
-        },
-        {
-          "id": 2,
-          "name": "History",
-          "teacher": "Mrs. P",
-          "courseAverage": 51.8
-        },
-        {
-          "id": 3,
-          "name": "Math",
-          "teacher": "Mrs. C",
-          "courseAverage": 74.2
-        }
-      ]
-    }
-  ]
-}
-  #TODO spot check result
+  output = report.generate_all()
+  #spot check
+  assert len(list(output.items())[0][1]) == 3
+  assert len(list(output.items())[0][1][0]["courses"]) == 3
+  assert list(output.items())[0][1][2]["totalAverage"] == 72.03
+  assert list(output.items())[0][1][0]["courses"][0]["courseAverage"] == 90.1
+  assert list(output.items())[0][1][0]["courses"][2]["courseAverage"] == 74.2
+  assert list(output.items())[0][1][2]["courses"][2]["name"] == "Math"
 
 def test_generate_all_students_2():
-  """test to see report output"""
+  """test to see report output for example 2"""
   report = c2j.Report("Example2/courses.csv", "Example2/students.csv", "Example2/tests.csv", "Example2/marks.csv", "Example2/output.json")
   
+  output = report.generate_all()
 
-  assert report.generate_all() == {
-  "students": [
-    {
-      "id": 5,
-      "name": "D",
-      "totalAverage": 26.55,
-      "courses": [
-        {
-          "id": 1,
-          "name": "Biology",
-          "teacher": "Mr. D",
-          "courseAverage": 1.3
-        },
-        {
-          "id": 2,
-          "name": "History",
-          "teacher": "Mrs. P",
-          "courseAverage": 51.8
-        }
-      ]
-    }
-  ]
-}
+  #spot check
+  assert list(output.items())[0][1][0]["name"] == "D"
+  assert list(output.items())[0][1][0]["id"] == 5
+  assert list(output.items())[0][1][0]["totalAverage"] == 26.55
+  assert len(list(output.items())[0][1][0]["courses"]) == 2
+  assert list(output.items())[0][1][0]["courses"][0]["courseAverage"] == 51.8

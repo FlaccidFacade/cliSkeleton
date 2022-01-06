@@ -1,6 +1,5 @@
 
-from src.modules.search.linear_search import LinearSearch 
-import src.modules.file_play.csv_to_JSON as c2j
+from src.modules.search.linear_search import LinearSearch
 
 
 def test_linear_search():
@@ -8,8 +7,6 @@ def test_linear_search():
   """
   a = {'id': 'name', '1': 'A', '2': 'A', '3': 'C'}
 
-  report = c2j.Report("Example1/courses.csv", "Example1/students.csv", "Example1/tests.csv", "Example1/marks.csv", "Example1/output.json")
-  
-  loc = report.search(a,'A')
+  loc = LinearSearch.find(None,a,'A')
 
   assert loc == ['1','2']

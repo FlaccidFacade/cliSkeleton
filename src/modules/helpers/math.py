@@ -15,9 +15,4 @@ def weighted_grade(grades:list=[],weights:list=[]) -> float:
   if not (len(grades) == len(weights)):
     return None
   
-  weight = sum(list(map(int, weights)))
-
-  if weight == 100:
-    return sum(multiply_lists(grades,weights))/100
-  else:
-    return None
+  return sum(multiply_lists(grades,weights))/100

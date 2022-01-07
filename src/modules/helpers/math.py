@@ -1,5 +1,5 @@
 
-from modules.helpers.list_operations import multiply_lists
+from src.modules.helpers.list_operations import multiply_lists
 
 def weighted_grade(grades:list=[],weights:list=[]) -> float:
   """calculate the weighted grade for given grades and weights

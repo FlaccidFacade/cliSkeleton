@@ -1,7 +1,7 @@
 """Tests the report class
 """
 
-import modules.conversion.csv_to_json as c2j
+import src.modules.conversion.csv_to_json as c2j
 
 
 def test_csv_to_dict():

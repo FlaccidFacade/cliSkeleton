@@ -38,7 +38,7 @@
 				</class>
 			</classes>
 		</package>
-		<package name="modules.conversion" line-rate="0.9739" branch-rate="0" complexity="0">
+		<package name="src.modules.conversion" line-rate="0.9739" branch-rate="0" complexity="0">
 			<classes>
 				<class name="__init__.py" filename="modules/conversion/__init__.py" complexity="0" line-rate="1" branch-rate="0">
 					<methods/>
@@ -166,7 +166,7 @@
 				</class>
 			</classes>
 		</package>
-		<package name="modules.helpers" line-rate="1" branch-rate="0" complexity="0">
+		<package name="src.modules.helpers" line-rate="1" branch-rate="0" complexity="0">
 			<classes>
 				<class name="__init__.py" filename="modules/helpers/__init__.py" complexity="0" line-rate="1" branch-rate="0">
 					<methods/>
@@ -197,7 +197,7 @@
 				</class>
 			</classes>
 		</package>
-		<package name="modules.search" line-rate="1" branch-rate="0" complexity="0">
+		<package name="src.modules.search" line-rate="1" branch-rate="0" complexity="0">
 			<classes>
 				<class name="__init__.py" filename="modules/search/__init__.py" complexity="0" line-rate="1" branch-rate="0">
 					<methods/>

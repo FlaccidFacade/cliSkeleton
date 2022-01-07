@@ -1,5 +1,5 @@
 import click.testing as ct
-import commands.main as cli
+import src.main as cli
 
 def test_no_arg_fail():
   """test how the program reacts when there is no arguments"""

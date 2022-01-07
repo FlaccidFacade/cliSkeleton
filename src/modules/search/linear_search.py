@@ -1,5 +1,5 @@
 
-from modules.search.abs_search import AbsSearch
+from src.modules.search.abs_search import AbsSearch
 
 
 class LinearSearch(AbsSearch):

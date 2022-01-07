@@ -6,13 +6,12 @@ from setuptools import find_packages, setup
 setup(
     name="report",
     version="0.1",
-    packages=find_packages("src"),
+    packages=find_packages(),
     include_package_data=True,
-    package_dir={"":"src"},
     install_requires=['Click','pandas'],
     entry_points={
         'console_scripts' : 
-        ['report = commands.main:start']
+        ['report = src.main:start']
     },
 
 )

@@ -17,7 +17,7 @@
 
 # First time use 
 
-
+python3
 
 # design clarifications
 
@@ -38,7 +38,7 @@
   different import styles for testing ability, readability, and usability.
   
     in test use this form: import src.modules.module_name as foo
-    in src use this form: from modules.module_name import ClassName
+    in src use this form: from src.modules.module_name import ClassName
 
 # First time use Developement
   0) Clone/fork the repo

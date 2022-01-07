@@ -1,9 +1,9 @@
 import pandas
 import json
-from modules.search.abs_search import AbsSearch
-from modules.search.linear_search import LinearSearch
-from modules.helpers.list_operations import unique_list
-from modules.helpers.math import weighted_grade
+from src.modules.search.abs_search import AbsSearch
+from src.modules.search.linear_search import LinearSearch
+from src.modules.helpers.list_operations import unique_list
+from src.modules.helpers.math import weighted_grade
 
 
 class Report:

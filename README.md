@@ -17,7 +17,27 @@
 
 # First time use 
 
-python3
+First you need to isntall the tool from root dir
+
+```
+pip install .
+```
+
+Now you can use the tool 'report' 
+
+```
+report [path for courses.csv] [path for students.csv] [path for tests.csv] [path for marks.csv] [path for output.json]
+```
+try
+
+```
+report --help
+```
+
+as an example
+```
+report /home/dev/Documents/Example1/courses.csv /home/dev/Documents/Example1/students.csv /home/dev/Documents/Example1/tests.csv /home/dev/Documents/Example1/marks.csv /home/dev/Documents/Example1/output.json
+```
 
 # design clarifications
 
@@ -98,7 +118,7 @@ python3
     **Note: be sure to adjust this as your project grows 
     and that your virtual environment is activated
 
-  ``` //TODO UPDATE REQUIREMENTS
+  ```
   pip install -r dev_requirements.txt
   ```
 
@@ -111,7 +131,6 @@ python3
   pip install -e .
   ```
 
-  
   6) Testing
 
 

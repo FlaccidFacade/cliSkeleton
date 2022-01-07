@@ -1,23 +1,23 @@
 # report
-  a base hello world outline for a cli tool
+  a base hello world outline for a CLI tool
 
-  this repository uses python3.9 and click module to create 
-  the cli tool
+  this repository uses python3.9 and the click module to create 
+  the CLI tool
 
-  click module is used great for a fast design 
-  and well equipped to scale with a design patterns
+  click is excellent for a fast design 
+  and well equipped to scale with design patterns
 
-  click handles extra features inhabitantly and offers easy to use features
+  click handles extra features by default and offers easy to use features
 
-  csv to dictionay conversion is handled using pandas module
+  CSV to dictionary conversion is handled using the pandas module
 
-  dictionary to json conversion is handled using json module
+  dictionary to JSON conversion is handled using JSON module
 
   the testing framework is pytest
 
-# First time use 
+# First-time use 
 
-First you need to isntall the tool from root dir
+First, you need to install the tool from the root dir
 
 ```
 pip install .
@@ -41,27 +41,22 @@ report /home/dev/Documents/Example1/courses.csv /home/dev/Documents/Example1/stu
 
 # design clarifications
 
-  This is designed under the assumption that no values in the csv files are empty, the paths/files given are valid and exist
+  This is designed under the assumption that no values in the CSV files are empty and that the paths/files given are valid and exist
 
-  The error response is different from the prompt. I believe erros should have more information.
-  The weights error does not completely replace the report. There is still data to be viewed/used if there are other courses with valid weights. For this reasoning I implimented the error report in a way to have the error appear at lower level if needed. Additionally I added more errors and return values to help identify issues.
+  The error response is different from the prompt. I believe errors should have more information.
+  The weights error does not entirely replace the report. There is still data to be viewed/used if other courses have valid weights. For this reasoning, I implemented the error report to have the error appear at a lower level if needed. Additionally, I added more errors and returned values to help identify issues.
 
-  Linear search is implimented as a strategy pattern because a larger data set might need a faster searching algorithm and the strategy pattern allows for easy additions and versioning
+  Linear search is implemented as a strategy pattern because a bigger data set might need a faster searching algorithm, and the strategy pattern allows for easy additions and versioning.
 
 
-  The Report class is created in a way so reports can be created per student for easier addition of future features.
+  The Report class is created with the ability to create reports per student for a more accessible addition of features.
 
   naming styles should follow pep 8 for readability
 
-  doc strings should follow google for readabilty
+  docstrings should follow google for readability
 
-  different import styles for testing ability, readability, and usability.
-  
-    in test use this form: import src.modules.module_name as foo
-    in src use this form: from src.modules.module_name import ClassName
-
-# First time use Developement
-  0) Clone/fork the repo
+# First time use Development
+  0) clone/fork the repo
 
   ```
   git clone https://github.com/FlaccidFacade/report.git
@@ -70,22 +65,17 @@ report /home/dev/Documents/Example1/courses.csv /home/dev/Documents/Example1/stu
 
   1) Python
 
-  Make sure python 3.9 is installed
+  Make sure python 3.9 is installed.
 
   ```
   python3 --version
   ```
 
-  This project is created with 3.9.9
+  This project was created using 3.9.9
 
   2) Virtual environment
 
   either use the specific version of python itself
-  or use virtualenv and specify
-
-  both create a venv folder in the root dir but
-  virtualenv is an extra dependency that can be used if
-  you choose to use a lower version of python like python2
 
   python:
 
@@ -95,7 +85,7 @@ report /home/dev/Documents/Example1/courses.csv /home/dev/Documents/Example1/stu
 
   3) Activate Virtual Env
 
-  in the same folder the virtual environment was created run:
+  In the same folder that the virtual environment was created in run:
 
   ```
   source venv/bin/activate
@@ -109,20 +99,17 @@ report /home/dev/Documents/Example1/courses.csv /home/dev/Documents/Example1/stu
 
   4) Dependencies/Requirements
 
-  The requirements.txt file holds all the needed 
+  The dev_requirements.txt file holds all the needed 
   packages for this project. 
-  
-  This is really the development requirements as it includes 
-  the testing framework
 
     **Note: be sure to adjust this as your project grows 
-    and that your virtual environment is activated
+    and that your virtual environment is activated before running the install.
 
   ```
   pip install -r dev_requirements.txt
   ```
 
-  5) Using Cli
+  5) Using Report
 
   This allows for modules and commands to be simultaneously
   updated and usable
@@ -137,9 +124,7 @@ report /home/dev/Documents/Example1/courses.csv /home/dev/Documents/Example1/stu
   6) Testing
 
 
-  To run all tests use python3 and root test directory
-
-  without coverage:
+  To run all tests in the test/ directory without coverage use:
 
   ```
   python3 -m pytest test/
@@ -160,23 +145,7 @@ report /home/dev/Documents/Example1/courses.csv /home/dev/Documents/Example1/stu
   NOTE: in visual studio using pytestArgs 
   remove "--cov-report", "xml:cov.xml", "--cov=src" arguements if you with to debug tests
 
-  testing the cli script from the click documents recommends:
-
-  """
-  To test the script, you can make a new virtualenv and then install your package:
-
-  virtualenv venv
-  . venv/bin/activate
-  pip install --editable .
-
-  Afterwards, your command should be available:
-
-  $ yourscript
-  Hello World!
-
-  """
-
-  But i think end2end testing is important so lets go one step further
+  testing the CLI script from the click documents recommends:
 
   """
   For basic testing, Click provides the click.testing module which provides test functionality that helps you invoke command line applications and check their behavior.
@@ -198,14 +167,14 @@ report /home/dev/Documents/Example1/courses.csv /home/dev/Documents/Example1/stu
   pytest docs for ref:
   https://docs.pytest.org/en/6.2.x/
 
-  I like to use a visual representation for coverage report that
-  maps what lines of code are covered or not with color.
+  I like to use a visual representation for coverage reports that
+  map what lines of code are covered or not with color.
 
-  "coverage gutters" vscode extenstion creates an easy to view coverage report
+  "coverage gutters" vscode extension creates an easy-to-view coverage report in the editing window with highlights on the lines.
 
   Name: Coverage Gutters
   Id: ryanluker.vscode-coverage-gutters
-  Description: Display test coverage generated by lcov or xml - works with many languages
+  Description: Display test coverage generated by lcov or XML - works with many languages
   Version: 2.8.2
   Publisher: ryanluker
   VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
@@ -213,5 +182,5 @@ report /home/dev/Documents/Example1/courses.csv /home/dev/Documents/Example1/stu
 
 
 # CREDIT
-  ignore file is orginally sourced from here: 
+  ignore file is originally sourced from here: 
   https://github.com/muhammad-mamdouh/Django_Projects/blob/1f31e12aefb36b33474256db40a2c551882f445e/src/.gitignore

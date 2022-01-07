@@ -59,7 +59,7 @@ def test_generate_one_student():
                                   {
                                     "id": 3,
                                     "name":"Math",
-                                    "teacher": " Mrs. C",
+                                    "teacher": "Mrs. C",
                                     "courseAverage": 74.2
                                   }
                                 ]

@@ -131,6 +131,9 @@ report /home/dev/Documents/Example1/courses.csv /home/dev/Documents/Example1/stu
   pip install -e .
   ```
 
+  ```
+  report --help
+  ```
   6) Testing
 
 

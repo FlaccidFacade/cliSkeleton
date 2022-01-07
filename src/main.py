@@ -13,12 +13,12 @@ def start(files,report):
       report (Path): the path for the JSON report to be created
   """
   #create report object given the file paths specified
-  report = Report(files[0],files[1],files[2],files[3],report)#TODO Write test to cover this
+  report = Report(files[0],files[1],files[2],files[3],report)
   #generate a report for all students in files
-  report.generate_all()#TODO Write test to cover this
+  report.generate_all()
   #write the report to JSON file
-  report.write_JSON()#TODO Write test to cover this
+  report.write_JSON()
 
 
 if __name__ == '__main__':
-  start()#TODO Write test to cover this
+  start()

@@ -179,7 +179,6 @@ class Report:
         report = self.generate(i)
         student_reports.append(report)
 
-
     #report if there is an error
     except Exception as e:
       return self.err(self.top_err_mess, value=e)

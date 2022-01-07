@@ -19,4 +19,4 @@ class AbsSearch(ABC):
     Returns:
         list: keys of target values in obj
     """
-    pass#TODO Write test to cover this
+    return []

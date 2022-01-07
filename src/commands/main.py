@@ -18,7 +18,3 @@ def start(files,report):
   report.generate_all()
   #write the report to JSON file
   report.write_JSON()
-
-
-if __name__ == '__main__':
-  start()

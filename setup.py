@@ -9,10 +9,10 @@ setup(
     packages=find_packages("src"),
     include_package_data=True,
     package_dir={"":"src"},
-    install_requires=['Click',],
+    install_requires=['Click','pandas'],
     entry_points={
         'console_scripts' : 
-        ['report = main:start']
+        ['report = commands.main:start']
     },
 
 )

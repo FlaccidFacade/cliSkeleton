@@ -1,5 +1,5 @@
 # report
-  a base hello world outline for a CLI tool
+  a simple CLI tool to convert csv files to json file report
 
   this repository uses python3.9 and the click module to create 
   the CLI tool
